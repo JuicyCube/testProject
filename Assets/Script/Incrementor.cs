@@ -10,7 +10,7 @@ public class Incrementor : MonoBehaviour
     public Animator animator;
     public CharacterController controller;
 
-    private bool isAnimating = false;
+    //private bool isAnimating = false;
 
     void Start()
     {
@@ -24,41 +24,27 @@ public class Incrementor : MonoBehaviour
             collectibleCounter.IncrementCollectible();
             score.text = collectibleCounter.totalCollected.ToString();
 
-            animator.SetTrigger("Pickup");
+            animator.SetBool("Pickup", true);
 
-            isAnimating = true; // set isAnimating flag to true
+            //isAnimating = true; // set isAnimating flag to true
             Destroy(other.gameObject);
+            // Set the "Pickup" animation parameter to false after the animation has finished playing
+            StartCoroutine(WaitForAnimationFinish());
         }
     }
 
-    private void Update()
+    private IEnumerator WaitForAnimationFinish()
     {
-        if (isAnimating)
-        {
-            if (controller.velocity.magnitude > 0f) // check if player is moving
-            {
-                animator.Play("Idle"); // cancel pickup animation
-                isAnimating = false;
-                animator.SetBool("IsMoving", true); // set IsMoving parameter to true
-            }
-            else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f) // check if pickup animation is finished
-            {
-                isAnimating = false;
-            }
-        }
-        else
-        {
-            float speed = controller.velocity.magnitude;
-            animator.SetFloat("Speed", speed); // set Speed parameter based on CharacterController velocity
+        // Wait for one frame to ensure that the animation parameter has been updated
+        yield return null;
 
-            if (controller.velocity.magnitude > 0f)
-            {
-                animator.SetBool("IsMoving", true);
-            }
-            else
-            {
-                animator.SetBool("IsMoving", false);
-            }
+        // Wait for the "Pickup" animation to finish playing
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("Pickup"))
+        {
+            yield return null;
         }
+
+        // Set the "Pickup" animation parameter to false
+        animator.SetBool("Pickup", false);
     }
 }
