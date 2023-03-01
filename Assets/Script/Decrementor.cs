@@ -27,7 +27,7 @@ public class Decrementor : MonoBehaviour
             animator.SetBool("Pickup", true);
 
             //isAnimating = true; // set isAnimating flag to true
-            Destroy(other.gameObject);
+            Destroy(other.gameObject, 2f);
             // Set the "Pickup" animation parameter to false after the animation has finished playing
             StartCoroutine(WaitForAnimationFinish());
         }
