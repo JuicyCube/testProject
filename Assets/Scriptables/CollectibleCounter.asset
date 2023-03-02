@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6111c78ea311d484ea7d44d08dc4f153, type: 3}
   m_Name: CollectibleCounter
   m_EditorClassIdentifier: 
-  totalCollected: 0
+  totalCollected: 3
