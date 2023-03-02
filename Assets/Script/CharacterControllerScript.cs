@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterControllerScript : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpSpeed = 8f;
+    //[SerializeField] float jumpSpeed = 8f;
     [SerializeField] float gravity = 20f;
     // [SerializeField] float rotationSpeed = 1f; // rotation speed
 
@@ -16,7 +16,7 @@ public class CharacterControllerScript : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
 
-
+    public float jumpSpeed = 8f;
 
 
     void Start()
@@ -31,7 +31,7 @@ public class CharacterControllerScript : MonoBehaviour
         CharacterMove();
     }
 
-    private void CharacterMove()
+    public void CharacterMove()
     {
         if (controller.isGrounded)
         {
