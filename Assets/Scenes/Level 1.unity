@@ -4250,7 +4250,7 @@ MonoBehaviour:
   - {fileID: 1526445851}
   - {fileID: 877126626}
   - {fileID: 726536838}
-  waitTime: 91
+  waitTime: 90.5
   player: {fileID: 2031932355}
 --- !u!1 &1723647214
 GameObject:
