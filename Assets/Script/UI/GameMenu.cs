@@ -18,7 +18,7 @@ public class GameMenu : MonoBehaviour
         if (isPaused)
         {
             PauseGame();
-            
+
         }
         else
         {
@@ -44,7 +44,7 @@ public class GameMenu : MonoBehaviour
 
     public void EndGame()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 
