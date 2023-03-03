@@ -115,47 +115,7 @@ public class CharacterControllerScript : MonoBehaviour
             animator.SetBool("Move", false);
         }
 
-        // check for jump input
-        // if (Input.GetButtonDown("Jump") && groundedPlayer)
-        // {
-        //     playerVelocity.y += Mathf.Sqrt(jumpHeight * -2f * gravity);
 
-        // }
-
-        // // Apply gravity to the movement
-        // if (controller.isGrounded)
-        // {
-        //     moveDirection.y = 0f;
-        //     Debug.Log("grounded");
-        //     if (Input.GetButtonDown("Jump"))
-        //     {
-        //         moveDirection.y = jumpSpeed;
-        //     }
-        // }
-        // else
-        // {
-        //     Debug.Log("not");
-        // }
-        // if (controller.isGrounded)
-        // {
-        //     Debug.Log("grounded");
-        //     moveDirection.y = 0f;
-        //     if (Input.GetButtonDown("Jump"))
-        //     {
-        //         // animator.SetBool("Jump", true);
-        //         moveDirection.y = jumpSpeed;
-        //     }
-        //     // animator.SetBool("Jump", false);
-        // }
-        // else if (!controller.isGrounded)
-        // {
-        //     Debug.Log("not");
-        //     moveDirection.y -= gravity * Time.deltaTime;
-
-        // }
-
-        // Move the controller
-        //playerVelocity.y += gravity * Time.deltaTime;
         controller.Move((movement + moveDirection) * Time.deltaTime);
 
         // Rotate the character towards the movement direction
@@ -164,80 +124,5 @@ public class CharacterControllerScript : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(movement);
         }
 
-
-
-        // private void CharacterMove()
-        // {
-        //      // Get the player's input
-        //     float horizontal = Input.GetAxis("Horizontal");
-        //     float vertical = Input.GetAxis("Vertical");
-
-        //     //Calculate the movement direction
-        //     Vector3 movement = new Vector3(horizontal, 0, vertical);
-        //     movement = transform.TransformDirection(movement);
-
-
-
-        //     // Apply speed to the movement direction
-        //     movement *= moveSpeed;
-
-        //     if(movement.x != 0 || movement.z != 0)
-        //     {
-        //         animator.SetBool("Move", true);
-        //     }
-        //     else
-        //     {
-        //         animator.SetBool("Move", false);
-        //     }
-
-
-        //     // if(Vector3.Angle(Vector3.forward, movement) > 1f || Vector3.Angle(Vector3.forward, movement) == 0)
-        //     // {
-        //     //     Vector3 direct = Vector3.RotateTowards(transform.forward, movement, moveSpeed, 5f);
-        //     //     transform.rotation = Quaternion.LookRotation(direct);
-        //     // }
-        //     // if (movement.magnitude > 0)
-        //     //     {
-        //     //         transform.rotation = Quaternion.LookRotation(movement);
-        //     //     }
-
-        // Apply gravity to the movement
-
     }
-    //     moveDirection.y -= gravity * Time.deltaTime;
-
-    //     // Move the controller
-    //     controller.Move(movement * Time.deltaTime + moveDirection * Time.deltaTime);
-    //     //transform.position = transform.forward * (horizontal + vertical);
-    //     // Set the animator parameters
-    //     animator.SetFloat("Horizontal", horizontal);
-    //     animator.SetFloat("Vertical", vertical);
-
-    //     // Move the controller
-    //     // controller.Move(movement * Time.deltaTime);
-
-    //     // Calculate the movement direction
-    //     if (horizontal < 0)
-    //     {
-    //         movement = Vector3.left * moveSpeed;
-    //         transform.rotation = Quaternion.Euler(0, -90, 0);
-    //     }
-    //     else if (horizontal > 0)
-    //     {
-    //         movement = Vector3.right * moveSpeed;
-    //         transform.rotation = Quaternion.Euler(0, 90, 0);
-    //     }
-    //     else if (vertical < 0)
-    //     {
-    //         movement = Vector3.back * moveSpeed;
-    //         transform.rotation = Quaternion.Euler(0, 180, 0);
-    //     }
-    //     else
-    //     {
-    //         movement = Vector3.forward * moveSpeed;
-    //         transform.rotation = Quaternion.identity;
-    //     }
-
-
-    // }
 }
