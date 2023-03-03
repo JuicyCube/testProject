@@ -341,7 +341,6 @@ GameObject:
   m_Component:
   - component: {fileID: 182640382}
   - component: {fileID: 182640381}
-  - component: {fileID: 182640380}
   - component: {fileID: 182640379}
   m_Layer: 0
   m_Name: MinimapCamera
@@ -365,14 +364,6 @@ MonoBehaviour:
   target: {fileID: 2031932348}
   smoothing: 5
   offset: {x: 0, y: 10, z: 0}
---- !u!81 &182640380
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182640378}
-  m_Enabled: 1
 --- !u!20 &182640381
 Camera:
   m_ObjectHideFlags: 0
