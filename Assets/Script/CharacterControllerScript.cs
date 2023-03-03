@@ -47,61 +47,57 @@ public class CharacterControllerScript : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
 
-
-        // // check player if grounded
-        // groundedPlayer = controller.isGrounded;
-
-        // // Reset the vertical velocity if the player is on the ground
-        // if (groundedPlayer)
-        // {
-        //     playerVelocity.y = 0f;
-        // }
-        // animator.SetBool("Jump", playerVelocity.y > 0f);
-
-        // if (groundedPlayer && playerVelocity.y < 0)
-        // {
-        //     playerVelocity.y = 0f;
-        // }
-
-        // if (playerVelocity.y < 0)
-        // {
-        //     animator.SetBool("Jump", false);
-        // }
-
-        // if (playerVelocity.y > 0)
-        // {
-        //     animator.SetBool("Jump", true);
-        // }
-
-
-
         // Get the player's input
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        // Set the animator parameters
-        animator.SetFloat("Horizontal", horizontal);
-        animator.SetFloat("Vertical", vertical);
-
         // Calculate the movement direction
         Vector3 movement = Vector3.zero;
-        if (horizontal < 0)
+        if (horizontal < 0 && vertical > 0)
         {
+            // Move diagonally up and left
+            movement = new Vector3(-moveSpeed, 0f, moveSpeed);
+            transform.rotation = Quaternion.Euler(0, -135, 0);
+        }
+        else if (horizontal > 0 && vertical > 0)
+        {
+            // Move diagonally up and right
+            movement = new Vector3(moveSpeed, 0f, moveSpeed);
+            transform.rotation = Quaternion.Euler(0, 135, 0);
+        }
+        else if (horizontal > 0 && vertical < 0)
+        {
+            // Move diagonally down and right
+            movement = new Vector3(moveSpeed, 0f, -moveSpeed);
+            transform.rotation = Quaternion.Euler(0, 45, 0);
+        }
+        else if (horizontal < 0 && vertical < 0)
+        {
+            // Move diagonally down and left
+            movement = new Vector3(-moveSpeed, 0f, -moveSpeed);
+            transform.rotation = Quaternion.Euler(0, -45, 0);
+        }
+        else if (horizontal < 0)
+        {
+            // Move left
             movement = Vector3.left * moveSpeed;
             transform.rotation = Quaternion.Euler(0, -90, 0);
         }
         else if (horizontal > 0)
         {
+            // Move right
             movement = Vector3.right * moveSpeed;
             transform.rotation = Quaternion.Euler(0, 90, 0);
         }
         else if (vertical < 0)
         {
+            // Move down
             movement = Vector3.back * moveSpeed;
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else if (vertical > 0)
         {
+            // Move up
             movement = Vector3.forward * moveSpeed;
             transform.rotation = Quaternion.identity;
         }
@@ -115,7 +111,6 @@ public class CharacterControllerScript : MonoBehaviour
             animator.SetBool("Move", false);
         }
 
-
         controller.Move((movement + moveDirection) * Time.deltaTime);
 
         // Rotate the character towards the movement direction
@@ -123,6 +118,6 @@ public class CharacterControllerScript : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(movement);
         }
-
     }
+
 }
