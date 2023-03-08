@@ -761,7 +761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &350264612
 Transform:
   m_ObjectHideFlags: 0
@@ -793,6 +793,8 @@ MonoBehaviour:
   movementSpeed: 1
   rotationSpeed: 4
   animator: {fileID: 350264615}
+  attackRange: 2
+  attackDelay: 1
 --- !u!136 &350264614
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2334,6 +2336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 955099443}
+  - component: {fileID: 955099444}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -2352,11 +2355,30 @@ Transform:
   m_LocalPosition: {x: 163, y: 85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1458965569}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &955099444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955099442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457993d56454bc941aaaa24b0c787437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiMode: {fileID: 2031932359}
+  prefab1: {fileID: 8331527204953794539, guid: 31ef9f6899c9f7c43b24d8ce103172a6, type: 3}
+  prefab2: {fileID: 4730780521663162016, guid: 5223b7804220b1044af51d6c94b92b56, type: 3}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  spawnRange: 18
+  spawnHeightOffset: 10
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4227,58 +4249,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395855677}
   m_CullTransparentMesh: 1
---- !u!1 &1458965567
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1458965569}
-  - component: {fileID: 1458965570}
-  m_Layer: 0
-  m_Name: BallSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1458965569
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458965567}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -161.46669, y: -84.27, z: -0.37130165}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 955099443}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1458965570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458965567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457993d56454bc941aaaa24b0c787437, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab1: {fileID: 8331527204953794539, guid: 31ef9f6899c9f7c43b24d8ce103172a6, type: 3}
-  prefab2: {fileID: 4730780521663162016, guid: 5223b7804220b1044af51d6c94b92b56, type: 3}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnRange: 18
-  spawnHeightOffset: 10
-  prefab1Transforms: []
 --- !u!1 &1476074231
 GameObject:
   m_ObjectHideFlags: 0
@@ -5317,9 +5287,11 @@ GameObject:
   - component: {fileID: 2031932356}
   - component: {fileID: 2031932358}
   - component: {fileID: 2031932357}
+  - component: {fileID: 2031932359}
+  - component: {fileID: 2031932360}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5414,6 +5386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0e3b6b38b8b06498fa048968ae12c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiMode: {fileID: 2031932359}
   score: {fileID: 1163638309}
   collectibleCounter: {fileID: 11400000, guid: 31c6e774fc1890a4bb78607132ab7df1, type: 2}
   animator: {fileID: 2031932356}
@@ -5430,6 +5403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90a8873f6df8684783873d9e820654c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiMode: {fileID: 2031932359}
   score: {fileID: 1163638309}
   collectibleCounter: {fileID: 11400000, guid: 31c6e774fc1890a4bb78607132ab7df1, type: 2}
   animator: {fileID: 2031932356}
@@ -5459,7 +5433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f41733fe17ce4e4c90b564edca64a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 3.5
   gravity: 20
   jumpSpeed: 7
 --- !u!95 &2031932356
@@ -5552,6 +5526,34 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &2031932359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031932343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17bde50feba3ae6419e0f2f5224b6fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  setter: {fileID: 2031932360}
+--- !u!114 &2031932360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031932343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  target: {fileID: 0}
 --- !u!1 &2145150993
 GameObject:
   m_ObjectHideFlags: 0
@@ -5770,6 +5772,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Finish
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075481661101209372, guid: ddbf42f017bc92942b61fb0b6077e8c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5075481661101209372, guid: ddbf42f017bc92942b61fb0b6077e8c0,
         type: 3}
