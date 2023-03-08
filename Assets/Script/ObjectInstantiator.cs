@@ -5,6 +5,7 @@ using Pathfinding;
 
 public class ObjectInstantiator : MonoBehaviour
 {
+    [SerializeField] AiMode aiMode;
     public GameObject prefab1;
     public GameObject prefab2;
     public LayerMask groundLayer;
@@ -13,31 +14,24 @@ public class ObjectInstantiator : MonoBehaviour
     private GameObject prefab1Instance;
     private GameObject prefab2Instance;
     private int count = 10;
-    [SerializeField] Transform[] prefab1Transforms;
-    private AIDestinationSetter destinationSetter;
 
     private void Start()
     {
-        prefab1Transforms = new Transform[count];
-
         for (int i = 0; i < count; i++)
         {
             if (i % 2 == 0)
             {
                 prefab1Instance = InstantiateOnGround(prefab1);
-                prefab1Transforms[i] = prefab1Instance.transform;
+                prefab1Instance.name = i.ToString();
+                aiMode.targets.Add(prefab1Instance.transform);
             }
             else
             {
                 prefab2Instance = InstantiateOnGround(prefab2);
+                prefab2Instance.name = i.ToString();
+                aiMode.targets.Add(prefab2Instance.transform);
             }
         }
-
-        // Get the AIDestinationSetter component attached to the game object that this script is attached to
-        destinationSetter = GetComponent<AIDestinationSetter>();
-
-        // Set the target transform of the AIDestinationSetter component to the first element in the prefab1Transforms array
-        destinationSetter.target = prefab1Transforms[0];
     }
 
     private GameObject InstantiateOnGround(GameObject prefab)

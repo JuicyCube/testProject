@@ -5,6 +5,7 @@ using TMPro;
 
 public class Incrementor : MonoBehaviour
 {
+    [SerializeField] AiMode aiMode;
     [SerializeField] TMP_Text score;
     public CollectibleCounter collectibleCounter;
     public Animator animator;
@@ -19,7 +20,7 @@ public class Incrementor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Collectable"))
+        if (other.CompareTag("Collectable") && other.transform.name == aiMode.targets[0].name)
         {
             collectibleCounter.IncrementCollectible();
             score.text = collectibleCounter.totalCollected.ToString();
@@ -29,6 +30,11 @@ public class Incrementor : MonoBehaviour
             //isAnimating = true; // set isAnimating flag to true
             Destroy(other.gameObject);
             // Set the "Pickup" animation parameter to false after the animation has finished playing
+            if (aiMode.targets.Count != 1)
+            {
+                aiMode.RemoveTarget();
+                aiMode.SetPlayerTarget();
+            }
             StartCoroutine(WaitForAnimationFinish());
         }
     }
