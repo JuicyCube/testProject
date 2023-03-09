@@ -5,49 +5,61 @@ using Pathfinding;
 
 public class AiMode : MonoBehaviour
 {
+    public GameObject AutoCollect;
     public List<Transform> targets;
     public AIDestinationSetter setter;
     public bool isAutoCollectEnabled = false;
 
-    private void Start()
+    private bool isPathfindingEnabled = false;
+
+    // Start is called before the first frame update
+    void Start()
     {
         SetPlayerTarget();
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        if (isAutoCollectEnabled)
+        if (isAutoCollectEnabled && isPathfindingEnabled)
         {
             // Enable auto pathfinding
             setter.enabled = true;
         }
+        else
+        {
+            StopAutoPathfinding();
+        }
     }
+
 
     public void SetPlayerTarget()
     {
         if (isAutoCollectEnabled)
         {
-            if (targets.Count > 0)
-            {
-                setter.enabled = true;
-                setter.target = targets[0];
-            }
-            else
-            {
-                StopAutoPathfinding();
-            }
+            setter.enabled = true;
+            setter.target = targets[0];
+            isPathfindingEnabled = true;
         }
     }
 
     public void RemoveTarget()
     {
         targets.RemoveAt(0);
-        SetPlayerTarget();
     }
 
     public void StopAutoPathfinding()
     {
-        isAutoCollectEnabled = false;
         setter.enabled = false;
+        isPathfindingEnabled = false;
+    }
+
+    public void ToggleAutoCollect()
+    {
+        isAutoCollectEnabled = !isAutoCollectEnabled;
+        if (!isAutoCollectEnabled)
+        {
+            StopAutoPathfinding();
+        }
     }
 }
