@@ -10,8 +10,6 @@ public class AiMode : MonoBehaviour
     public AIDestinationSetter setter;
     public bool isAutoCollectEnabled = false;
 
-    private bool isPathfindingEnabled = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,25 +19,19 @@ public class AiMode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAutoCollectEnabled && isPathfindingEnabled)
+        if (isAutoCollectEnabled)
         {
             // Enable auto pathfinding
             setter.enabled = true;
         }
-        else
-        {
-            StopAutoPathfinding();
-        }
     }
-
 
     public void SetPlayerTarget()
     {
-        if (isAutoCollectEnabled)
+        if (isAutoCollectEnabled && targets != null && targets.Count > 0)
         {
             setter.enabled = true;
             setter.target = targets[0];
-            isPathfindingEnabled = true;
         }
     }
 
@@ -51,15 +43,6 @@ public class AiMode : MonoBehaviour
     public void StopAutoPathfinding()
     {
         setter.enabled = false;
-        isPathfindingEnabled = false;
     }
 
-    public void ToggleAutoCollect()
-    {
-        isAutoCollectEnabled = !isAutoCollectEnabled;
-        if (!isAutoCollectEnabled)
-        {
-            StopAutoPathfinding();
-        }
-    }
 }

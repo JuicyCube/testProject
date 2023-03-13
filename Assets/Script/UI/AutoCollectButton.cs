@@ -26,6 +26,7 @@ public class AutoCollectButton : MonoBehaviour
         else
         {
             aiMode.StopAutoPathfinding();
+            aiMode.targets = null;
         }
     }
 }

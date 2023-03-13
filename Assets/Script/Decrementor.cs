@@ -22,23 +22,29 @@ public class Decrementor : MonoBehaviour
     {
         if (other.CompareTag("Obstacle") && other.transform.name == aiMode.targets[0].name)
         {
-            collectibleCounter.DecrementCollectible();
-            score.text = collectibleCounter.totalCollected.ToString();
-
-            animator.SetBool("Pickup", true);
-
-            //isAnimating = true; // set isAnimating flag to true
-            Destroy(other.gameObject);
-            // Set the "Pickup" animation parameter to false after the animation has finished playing
-
-            if (aiMode.targets.Count != 1)
+            // check if isAutoCollectEnabled is false before allowing the object to be picked up
+            if (!collectibleCounter.isAutoCollectEnabled)
             {
-                aiMode.RemoveTarget();
-                aiMode.SetPlayerTarget();
+                collectibleCounter.DecrementCollectible();
+                score.text = collectibleCounter.totalCollected.ToString();
+
+                animator.SetBool("Pickup", true);
+
+                //isAnimating = true; // set isAnimating flag to true
+                Destroy(other.gameObject);
+                // Set the "Pickup" animation parameter to false after the animation has finished playing
+
+                if (aiMode.targets.Count != 1)
+                {
+                    aiMode.RemoveTarget();
+                    aiMode.SetPlayerTarget();
+                }
+                StartCoroutine(WaitForAnimationFinish());
+
             }
-            StartCoroutine(WaitForAnimationFinish());
         }
     }
+
 
     private IEnumerator WaitForAnimationFinish()
     {

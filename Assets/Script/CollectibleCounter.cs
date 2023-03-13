@@ -6,6 +6,7 @@ using UnityEngine;
 public class CollectibleCounter : ScriptableObject
 {
     public int totalCollected = 0;
+    public bool isAutoCollectEnabled = true;
 
     public void IncrementCollectible()
     {
