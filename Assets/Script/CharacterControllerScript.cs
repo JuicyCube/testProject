@@ -18,6 +18,9 @@ public class CharacterControllerScript : MonoBehaviour
 
     public float jumpSpeed = 8f;
 
+    // New variable to store the player's current speed
+    private float currentSpeed = 0f;
+
 
     void Start()
     {
@@ -102,14 +105,25 @@ public class CharacterControllerScript : MonoBehaviour
             transform.rotation = Quaternion.identity;
         }
 
-        if (movement.x != 0 || movement.z != 0)
-        {
-            animator.SetBool("Move", true);
-        }
-        else
-        {
-            animator.SetBool("Move", false);
-        }
+        // if (movement.magnitude > 0)
+        // {
+        //     animator.SetBool("Move", true);
+        //     Debug.Log("Movement: " + movement);
+        //     Debug.Log("Animator: " + animator);
+
+
+        // }
+        // else
+        // {
+        //     animator.SetBool("Move", false);
+        // }
+
+        // Update the current speed based on the movement direction and move speed
+        currentSpeed = movement.magnitude * moveSpeed;
+
+        // Update the Move parameter of the animator based on the current speed
+        animator.SetBool("Move", currentSpeed > 0);
+
 
         controller.Move((movement + moveDirection) * Time.deltaTime);
 
@@ -119,5 +133,4 @@ public class CharacterControllerScript : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(movement);
         }
     }
-
 }
