@@ -20,10 +20,10 @@ public class Decrementor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle") && other.transform.name == aiMode.targets[0].name)
+        if (other.CompareTag("Obstacle") && other.transform.name == aiMode.setter.target.name)
         {
             // check if isAutoCollectEnabled is false before allowing the object to be picked up
-            if (!collectibleCounter.isAutoCollectEnabled)
+            if (collectibleCounter.isAutoCollectEnabled)
             {
                 collectibleCounter.DecrementCollectible();
                 score.text = collectibleCounter.totalCollected.ToString();

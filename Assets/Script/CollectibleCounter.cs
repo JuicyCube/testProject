@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CollectibleCounter", menuName = "ScriptableObject/CollectibleCounter")]
 public class CollectibleCounter : ScriptableObject
 {
+    public int level = 1;
     public int totalCollected = 0;
     public bool isAutoCollectEnabled = true;
 
