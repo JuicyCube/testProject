@@ -58,15 +58,15 @@ public class GameMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void Level2()
-    {
-        SceneManager.LoadScene("Level 2");
-    }
+    // public void Level2()
+    // {
+    //     SceneManager.LoadScene("Level 2");
+    // }
 
-    public void Level3()
-    {
-        SceneManager.LoadScene("Level 3");
-    }
+    // public void Level3()
+    // {
+    //     SceneManager.LoadScene("Level 3");
+    // }
 
     public void CloseLevelSelectionPopup()
     {

@@ -12,7 +12,6 @@ public class AiMode : MonoBehaviour
     [SerializeField] bool isAutoCollectEnabled = false;
     public AIDestinationSetter setter;
     public List<Transform> targets;
-    
 
 
     // Start is called before the first frame update

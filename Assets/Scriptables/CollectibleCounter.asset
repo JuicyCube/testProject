@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CollectibleCounter
   m_EditorClassIdentifier: 
   level: 1
-  totalCollected: 0
+  totalCollected: 3
   isAutoCollectEnabled: 1

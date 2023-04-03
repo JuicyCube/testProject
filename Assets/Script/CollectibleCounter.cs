@@ -18,7 +18,10 @@ public class CollectibleCounter : ScriptableObject
     {
         totalCollected--;
     }
-
+    public void Levels()
+    {
+        level += 1;
+    }
     public void Reset()
     {
         //totalCollected = 0;

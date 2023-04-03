@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5075481661101209347}
   - component: {fileID: 5075481661101209346}
   - component: {fileID: 5075481661101209373}
+  - component: {fileID: 3451295043423000151}
   m_Layer: 0
   m_Name: Finish
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5c6e0e9402d0f6d419669486428de8a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,6 +99,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3451295043423000151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075481661101209372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2739b1bf4807a4642a29fda3a2ab545a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleCounter: {fileID: 11400000, guid: 31c6e774fc1890a4bb78607132ab7df1, type: 2}
+  requiredCollectibles: 3
+  collectiblesMultiplier: 1
 --- !u!1 &7250155904886235150
 GameObject:
   m_ObjectHideFlags: 0
