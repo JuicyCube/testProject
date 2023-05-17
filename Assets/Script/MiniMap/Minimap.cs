@@ -24,9 +24,9 @@ namespace Minimap {
         public static event EventHandler OnZoomChanged;
 
         public static void Init() {
-            MinimapCamera.OnZoomChanged += MinimapCamera_OnZoomChanged;
-            MinimapWindow.OnWindowShow += MinimapWindow_OnWindowShow;
-            MinimapWindow.OnWindowHide += MinimapWindow_OnWindowHide;
+            //MinimapCamera.OnZoomChanged += MinimapCamera_OnZoomChanged;
+            //MinimapWindow.OnWindowShow += MinimapWindow_OnWindowShow;
+            //MinimapWindow.OnWindowHide += MinimapWindow_OnWindowHide;
         }
 
         private static void MinimapWindow_OnWindowHide(object sender, EventArgs e) {
@@ -41,13 +41,6 @@ namespace Minimap {
             if (OnZoomChanged != null) OnZoomChanged(sender, e);
         }
 
-        public static void ShowWindow() {
-            MinimapWindow.Show();
-        }
-
-        public static void HideWindow() {
-            MinimapWindow.Hide();
-        }
 
         public static void SetZoom(float orthographicSize) {
             MinimapCamera.SetZoom(orthographicSize);
