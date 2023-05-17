@@ -20,5 +20,6 @@ public class ScoreManager : MonoBehaviour
     private void UpdateCollectibleText()
     {
         collectibleText.SetText("Collectibles: " + collectibleCounter.totalCollected);
+        
     }
 }
